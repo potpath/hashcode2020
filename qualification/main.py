@@ -16,7 +16,7 @@ def cal_all(input_file):
             lib = Library(lib_id, signup_day, book_per_day, books_in_lib)
             libs.append(lib)
 
-    answers = cal(books, libs)
+    answers = cal(books, libs, n_day)
 
     if input_file.endswith('.txt'):
         input_file = input_file[:-4]
