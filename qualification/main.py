@@ -19,6 +19,7 @@ def cal_all(input_file):
             libs.append(lib)
 
     answers = cal(books, libs, n_day)
+    answers = [ans for ans in answers if ans.book_to_scan]
 
     if input_file.endswith('.txt'):
         input_file = input_file[:-4]
@@ -26,8 +27,6 @@ def cal_all(input_file):
     with open(output_file, 'w') as fout:
         print(len(answers), file=fout)
         for ans in answers:
-            if not ans.book_to_scan:
-                continue
             print(ans.lib.id, len(ans.book_to_scan), file=fout)
             print(' '.join(str(book.id) for book in ans.book_to_scan), file=fout)
     print(f'Done {input_file}')
