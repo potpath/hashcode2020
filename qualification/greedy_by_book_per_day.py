@@ -3,7 +3,7 @@ from util import Answer
 
 def cal(books, libs):
     def sort_by_signup_day(lib):
-        return -len(lib.books), -lib.book_per_day, lib.signup_day
+        return -lib.book_per_day, lib.signup_day
 
     sort_keys = [
         sort_by_signup_day,
