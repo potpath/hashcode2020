@@ -41,10 +41,10 @@ def unique(answers, n_day):
             for book in ans.book_to_scan[nth_book[lib]:]:
                 if book not in book_done:
                     book_done.add(book)
+                    nth_book[lib] += 1
                     new_ans[i_ans].book_to_scan.append(book)
                     ok_count += 1
                     if ok_count == lib.book_per_day:
                         break
-            nth_book[lib] += 1
 
     return new_ans
