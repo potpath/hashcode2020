@@ -26,13 +26,13 @@ def unique(answers, n_day):
     lib_done = set()
     nth_book = defaultdict(int)
     new_ans = [Answer(ans.lib, []) for ans in answers]
-    n_lib_registered = 0
     last_registered_day = 0
     for day in range(n_day):
-        lib_to_be_registered = answers[n_lib_registered].lib
-        if day == last_registered_day + lib_to_be_registered.signup_day:
-            lib_done.add(lib_to_be_registered)
-            last_registered_day = day
+        if len(lib_done) < len(answers):
+            lib_to_be_registered = answers[len(lib_done)].lib
+            if day == last_registered_day + lib_to_be_registered.signup_day:
+                lib_done.add(lib_to_be_registered)
+                last_registered_day = day
         for i_ans, ans in enumerate(answers):
             lib = ans.lib
             if lib not in lib_done:
