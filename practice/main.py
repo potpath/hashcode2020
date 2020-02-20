@@ -11,7 +11,7 @@ def cal_all(input_file):
     ans = cal(M, N, Ss)
     if input_file.endswith('.in'):
         input_file = input_file[:-3]
-    output_file = algo_name + '_' + input_file + '.out'
+    output_file = 'out/' + algo_name + '_' + input_file + '.out'
     with open(output_file, 'w') as fout:
         print(len(ans), file=fout)
         print(' '.join(map(str, ans)), file=fout)
