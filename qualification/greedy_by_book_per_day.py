@@ -1,4 +1,4 @@
-from util import Answer
+from util import Answer, unique
 
 
 def cal(books, libs, n_day):
@@ -11,4 +11,5 @@ def cal(books, libs, n_day):
         ans = Answer(lib, sorted(lib.books, key=lambda book: -book.score))
         answers.append(ans)
 
+    answers = unique(answers, n_day)
     return answers
