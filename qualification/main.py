@@ -13,6 +13,8 @@ def cal_all(input_file):
         for lib_id in range(n_lib):
             _, signup_day, book_per_day = map(int, next(fin).split())
             books_in_lib = [books[book_id] for book_id in map(int, next(fin).split())]
+            if signup_day >= n_day:
+                continue
             lib = Library(lib_id, signup_day, book_per_day, books_in_lib)
             libs.append(lib)
 
@@ -24,7 +26,9 @@ def cal_all(input_file):
     with open(output_file, 'w') as fout:
         print(len(answers), file=fout)
         for ans in answers:
-            print(ans.lib_id, len(ans.book_to_scan), file=fout)
+            if not ans.book_to_scan:
+                continue
+            print(ans.lib.id, len(ans.book_to_scan), file=fout)
             print(' '.join(str(book.id) for book in ans.book_to_scan), file=fout)
     print(f'Done {input_file}')
 
